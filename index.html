@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Karuppasami Kasivisvanathan — Frontend &amp; PHP Web Application Developer</title>
+  <meta name="description" content="Karuppasami Kasivisvanathan is a Frontend & PHP Web Application Developer from Tamil Nadu building premium, performance-focused websites, business sites and web applications with clean UI and reliable functionality.">
+  <meta name="keywords" content="Karuppasami Kasivisvanathan, frontend developer, PHP developer, web application developer, MySQL, Tamil Nadu web developer, portfolio website developer, business website developer">
+  <meta name="author" content="Karuppasami Kasivisvanathan">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050611">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Karuppasami Kasivisvanathan — Frontend & PHP Web Application Developer">
+  <meta property="og:description" content="Modern, responsive and performance-focused websites & web applications — clean UI, smooth interactions, reliable functionality.">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Karuppasami Kasivisvanathan — Frontend & PHP Web Application Developer">
+  <meta name="twitter:description" content="Modern, responsive and performance-focused websites & web applications — clean UI, smooth interactions, reliable functionality.">
+
+  <!-- Favicon: inline SVG monogram, no external asset needed -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23090b1a'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='%2325e0d0' text-anchor='middle'%3EKK%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: display face (Space Grotesk), body face (Inter), mono/code face (JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Devicon: official technology logos (HTML5, CSS3, JS, PHP, MySQL, Git, GitHub, VS Code) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.17.0/devicon.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Person structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Karuppasami Kasivisvanathan",
+    "jobTitle": "Frontend & PHP Web Application Developer",
+    "description": "Frontend & PHP Web Application Developer creating modern, responsive and performance-focused websites and web applications.",
+    "knowsAbout": ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "Web Application Development"],
+    "address": { "@type": "PostalAddress", "addressRegion": "Tamil Nadu", "addressCountry": "IN" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Skip link for keyboard / screen-reader users -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============ PRELOADER ============ -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__mark">
+        <span>K</span><span>K</span>
+      </div>
+      <div class="preloader__bar-track">
+        <div class="preloader__bar-fill" id="preloaderFill"></div>
+      </div>
+      <div class="preloader__count" id="preloaderCount">0%</div>
+    </div>
+  </div>
+
+  <!-- ============ AMBIENT / DECORATIVE LAYERS (fixed, non-interactive) ============ -->
+  <div class="bg-layers" aria-hidden="true">
+    <canvas id="particleCanvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="bg-aurora">
+      <span class="aurora-blob aurora-blob--blue"></span>
+      <span class="aurora-blob aurora-blob--cyan"></span>
+      <span class="aurora-blob aurora-blob--purple"></span>
+    </div>
+    <div class="bg-noise"></div>
+  </div>
+
+  <!-- Hidden SVG filter definitions used by the noise layer -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence>
+      <feColorMatrix type="saturate" values="0"></feColorMatrix>
+    </filter>
+  </svg>
+
+  <!-- ============ CUSTOM CURSOR (desktop / fine pointers only) ============ -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ============ SCROLL PROGRESS ============ -->
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__fill" id="scrollProgressFill"></div></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav" id="siteNav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo" data-cursor-hover aria-label="Karuppasami Kasivisvanathan — home">
+        <span class="nav__logo-mark">KK</span>
+        <span class="nav__logo-text">Karuppasami<em>.dev</em></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#about" class="nav__link" data-cursor-hover>About</a>
+        <a href="#stack" class="nav__link" data-cursor-hover>Stack</a>
+        <a href="#services" class="nav__link" data-cursor-hover>Services</a>
+        <a href="#projects" class="nav__link" data-cursor-hover>Work</a>
+        <a href="#students" class="nav__link" data-cursor-hover>Students</a>
+        <a href="#contact" class="nav__link" data-cursor-hover>Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="#contact" class="btn btn--sm btn--primary nav__cta" data-cursor-hover>
+          <span>Hire Me</span>
+        </a>
+        <button class="nav__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" data-cursor-hover>
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home" aria-label="Introduction">
+      <div class="hero__inner">
+
+        <div class="hero__content" data-reveal="up">
+          <p class="eyebrow"><span class="eyebrow__dot"></span>const status = "available for freelance work";</p>
+
+          <h1 class="hero__title">
+            <span class="hero__title-line">Hi, I'm</span>
+            <span class="hero__title-name">Karuppasami Kasivisvanathan</span>
+          </h1>
+
+          <p class="hero__role">
+            <span class="hero__role-text" id="heroRole">Frontend &amp; PHP Web Application Developer</span>
+          </p>
+
+          <p class="hero__desc">
+            I create modern, responsive and performance-focused websites and web applications with clean UI, smooth interactions and reliable functionality.
+          </p>
+
+          <ul class="hero__stack" aria-label="Core technologies">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>MySQL</li>
+          </ul>
+
+          <div class="hero__cta">
+            <a href="#projects" class="btn btn--primary" data-cursor-hover data-magnetic>
+              <span>View My Work</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+            <a href="#contact" class="btn btn--ghost" data-cursor-hover data-magnetic>
+              <span>Let's Talk</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__visual" data-reveal="scale" data-delay="150">
+          <!-- Signature element: a mock code editor window echoing the developer's own tools -->
+          <div class="code-window" id="codeWindow">
+            <div class="code-window__bar">
+              <div class="code-window__dots"><span></span><span></span><span></span></div>
+              <div class="code-window__tab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-12M4 8l-3 4 3 4M20 8l3 4-3 4"/></svg>
+                developer.js
+              </div>
+            </div>
+            <div class="code-window__body">
+              <pre class="code-window__pre" id="codeWindowPre" aria-hidden="true"></pre>
+            </div>
+            <div class="code-window__glow"></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" data-cursor-hover aria-label="Scroll to about section">
+        <span class="scroll-cue__mouse"><span class="scroll-cue__dot"></span></span>
+        <span class="scroll-cue__label">Scroll</span>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="section__inner about__grid">
+
+        <div class="about__visual" data-reveal="left">
+          <div class="about__frame">
+            <div class="about__frame-glow"></div>
+            <div class="about__frame-inner">
+              <span class="about__monogram">KK</span>
+              <svg class="about__brackets" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <path d="M70 50 L40 100 L70 150" stroke="url(#aboutGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M130 50 L160 100 L130 150" stroke="url(#aboutGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="aboutGrad" x1="0" y1="0" x2="200" y2="200">
+                    <stop offset="0%" stop-color="#4f7fff"/>
+                    <stop offset="55%" stop-color="#25e0d0"/>
+                    <stop offset="100%" stop-color="#a35cff"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="about__badge about__badge--1">Clean Code</span>
+            <span class="about__badge about__badge--2">Pixel‑Perfect UI</span>
+            <span class="about__badge about__badge--3">Reliable Delivery</span>
+          </div>
+        </div>
+
+        <div class="about__content">
+          <p class="eyebrow" data-reveal="up">// 01 — about-me</p>
+          <h2 class="section__title" id="about-title" data-reveal="up" data-delay="80">
+            Building premium web experiences, straight from Tamil Nadu.
+          </h2>
+          <p class="about__text" data-reveal="up" data-delay="140">
+            I'm a passionate developer from Tamil Nadu who loves turning ideas into premium websites, business websites and full web applications. I care about the details — clean layouts, smooth interactions and code that actually holds up in production.
+          </p>
+          <p class="about__text" data-reveal="up" data-delay="180">
+            I'm constantly sharpening my modern UI/UX skills, exploring new interaction patterns and refining how I build with HTML, CSS, JavaScript, PHP and MySQL — so every project feels current, fast and dependable.
+          </p>
+
+          <div class="about__points" data-reveal="up" data-delay="220">
+            <div class="about__point">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Responsive, performance-first builds</span>
+            </div>
+            <div class="about__point">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Full-stack PHP &amp; MySQL applications</span>
+            </div>
+            <div class="about__point">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Continuously refining modern UI/UX craft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECH STACK ============ -->
+    <section class="stack section" id="stack" aria-labelledby="stack-title">
+      <div class="section__inner">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal="up">// 02 — tools-of-the-trade</p>
+          <h2 class="section__title" id="stack-title" data-reveal="up" data-delay="80">Tech Stack</h2>
+          <p class="section__subtitle" data-reveal="up" data-delay="120">The languages, tools and workflow I build with every day.</p>
+        </div>
+
+        <ul class="stack__grid" role="list">
+          <li class="stack__card" data-reveal="up" data-delay="0"><i class="devicon-html5-plain colored" aria-hidden="true"></i><span>HTML5</span></li>
+          <li class="stack__card" data-reveal="up" data-delay="40"><i class="devicon-css3-plain colored" aria-hidden="true"></i><span>CSS3</span></li>
+          <li class="stack__card" data-reveal="up" data-delay="80"><i class="devicon-javascript-plain colored" aria-hidden="true"></i><span>JavaScript</span></li>
+          <li class="stack__card" data-reveal="up" data-delay="120"><i class="devicon-php-plain colored" aria-hidden="true"></i><span>PHP</span></li>
+          <li class="stack__card" data-reveal="up" data-delay="160"><i class="devicon-mysql-plain colored" aria-hidden="true"></i><span>MySQL</span></li>
+          <li class="stack__card" data-reveal="up" data-delay="200"><i class="devicon-git-plain colored" aria-hidden="true"></i><span>Git</span></li>
+          <li class="stack__card" data-reveal="up" data-delay="240"><i class="devicon-github-original" aria-hidden="true"></i><span>GitHub</span></li>
+          <li class="stack__card" data-reveal="up" data-delay="280"><i class="devicon-vscode-plain colored" aria-hidden="true"></i><span>VS Code</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="services section" id="services" aria-labelledby="services-title">
+      <div class="section__inner">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal="up">// 03 — what-i-do</p>
+          <h2 class="section__title" id="services-title" data-reveal="up" data-delay="80">Services</h2>
+          <p class="section__subtitle" data-reveal="up" data-delay="120">End-to-end web development, from first pixel to production database.</p>
+        </div>
+
+        <div class="services__grid">
+          <!-- Each card reveals with a slightly different animation profile for visual rhythm -->
+          <article class="service-card" data-reveal="up" data-delay="0">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div>
+            <h3>Portfolio Websites</h3>
+            <p>Personal portfolios that present your work with clarity, personality and a premium first impression.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="60">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            <h3>Business Websites</h3>
+            <p>Professional websites that build instant trust and turn visitors into genuine business enquiries.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="120">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v6a2 2 0 0 0 2 2v12"/><path d="M8 2v6a2 2 0 0 1-2 2"/><path d="M6 2v6"/><path d="M18 2c-2 3-2 6 0 8-1 1-1 2-1 3v9"/></svg></div>
+            <h3>Restaurant Websites</h3>
+            <p>Appetite-driving menus, galleries and reservation-ready layouts for cafés and restaurants.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="0">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
+            <h3>Inventory Management Systems</h3>
+            <p>PHP &amp; MySQL systems that track stock levels, movements and low-stock alerts in real time.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="60">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg></div>
+            <h3>Billing Systems</h3>
+            <p>Accurate, auditable billing and invoicing systems built for speed at the counter and in the back office.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="120">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="4" y2="10"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="14"/><line x1="4" y1="20" x2="20" y2="20"/></svg></div>
+            <h3>Admin Dashboard Development</h3>
+            <p>Data-dense dashboards that stay readable — live metrics, tables and controls that make sense at a glance.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="0">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+            <h3>Website Redesign</h3>
+            <p>Giving outdated sites a modern, faster, mobile-first makeover without losing what already works.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="60">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="6" width="8" height="12" rx="4"/><path d="M12 2v4M8 9H4M8 13H3M8 17H4M16 9h4M16 13h5M16 17h4M9 6L7 3M15 6l2-3"/></svg></div>
+            <h3>Bug Fixing &amp; Maintenance</h3>
+            <p>Fast, careful fixes and ongoing maintenance so your site keeps running smoothly after launch.</p>
+          </article>
+
+          <article class="service-card" data-reveal="up" data-delay="120">
+            <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 10v6"/></svg></div>
+            <h3>Student Portfolio Websites</h3>
+            <p>Affordable, premium-quality portfolios built specifically for school and college students.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="projects section" id="projects" aria-labelledby="projects-title">
+      <div class="section__inner">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal="up">// 04 — selected-work</p>
+          <h2 class="section__title" id="projects-title" data-reveal="up" data-delay="80">Featured Projects</h2>
+          <p class="section__subtitle" data-reveal="up" data-delay="120">A few builds that show how I approach real-world problems.</p>
+        </div>
+
+        <div class="projects__grid">
+
+          <!-- Project 1 -->
+          <article class="project-card" data-tilt data-reveal="up" data-delay="0">
+            <div class="project-card__spotlight"></div>
+            <div class="project-card__preview project-card__preview--1">
+              <div class="mock-browser">
+                <div class="mock-browser__bar"><span></span><span></span><span></span></div>
+                <div class="mock-browser__body">
+                  <div class="mock-ui mock-ui--billing">
+                    <div class="mock-ui__side"></div>
+                    <div class="mock-ui__main">
+                      <div class="mock-ui__row mock-ui__row--wide"></div>
+                      <div class="mock-ui__row"></div>
+                      <div class="mock-ui__row"></div>
+                      <div class="mock-ui__cards"><span></span><span></span><span></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3>Smart Hostel Billing System</h3>
+              <p>A PHP &amp; MySQL platform that automates hostel fee billing, student records and payment tracking from one admin dashboard.</p>
+              <ul class="project-card__tags">
+                <li>PHP</li><li>MySQL</li><li>JavaScript</li><li>Admin Dashboard</li>
+              </ul>
+              <div class="project-card__links">
+                <a href="#" class="btn btn--sm btn--ghost" data-cursor-hover><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+                <a href="#" class="btn btn--sm btn--primary" data-cursor-hover><span>Live Demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card" data-tilt data-reveal="up" data-delay="60">
+            <div class="project-card__spotlight"></div>
+            <div class="project-card__preview project-card__preview--2">
+              <div class="mock-browser">
+                <div class="mock-browser__bar"><span></span><span></span><span></span></div>
+                <div class="mock-browser__body">
+                  <div class="mock-ui mock-ui--inventory">
+                    <div class="mock-ui__row mock-ui__row--wide"></div>
+                    <div class="mock-ui__table">
+                      <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3>Inventory Management System</h3>
+              <p>Stock tracking with supplier management, movement history and low-stock alerts, built for daily operational use.</p>
+              <ul class="project-card__tags">
+                <li>PHP</li><li>MySQL</li><li>HTML/CSS</li><li>Reports</li>
+              </ul>
+              <div class="project-card__links">
+                <a href="#" class="btn btn--sm btn--ghost" data-cursor-hover><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+                <a href="#" class="btn btn--sm btn--primary" data-cursor-hover><span>Live Demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card" data-tilt data-reveal="up" data-delay="0">
+            <div class="project-card__spotlight"></div>
+            <div class="project-card__preview project-card__preview--3">
+              <div class="mock-browser">
+                <div class="mock-browser__bar"><span></span><span></span><span></span></div>
+                <div class="mock-browser__body">
+                  <div class="mock-ui mock-ui--portfolio">
+                    <div class="mock-ui__hero"></div>
+                    <div class="mock-ui__grid"><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3>Premium Portfolio Website</h3>
+              <p>A glassmorphism-driven personal portfolio template with animated backgrounds and buttery-smooth scroll reveals.</p>
+              <ul class="project-card__tags">
+                <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Animation</li>
+              </ul>
+              <div class="project-card__links">
+                <a href="#" class="btn btn--sm btn--ghost" data-cursor-hover><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+                <a href="#" class="btn btn--sm btn--primary" data-cursor-hover><span>Live Demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card" data-tilt data-reveal="up" data-delay="60">
+            <div class="project-card__spotlight"></div>
+            <div class="project-card__preview project-card__preview--4">
+              <div class="mock-browser">
+                <div class="mock-browser__bar"><span></span><span></span><span></span></div>
+                <div class="mock-browser__body">
+                  <div class="mock-ui mock-ui--restaurant">
+                    <div class="mock-ui__hero mock-ui__hero--warm"></div>
+                    <div class="mock-ui__menu"><span></span><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3>Modern Restaurant Website</h3>
+              <p>An elegant, appetite-driving restaurant site with menu showcase, gallery and a mobile-first reservation flow.</p>
+              <ul class="project-card__tags">
+                <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsive</li>
+              </ul>
+              <div class="project-card__links">
+                <a href="#" class="btn btn--sm btn--ghost" data-cursor-hover><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+                <a href="#" class="btn btn--sm btn--primary" data-cursor-hover><span>Live Demo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATES SHOWCASE ============ -->
+    <section class="certificates section" id="certificates" aria-labelledby="certificates-title">
+      <div class="section__inner">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal="up">// credentials — proof-of-work</p>
+          <h2 class="section__title" id="certificates-title" data-reveal="up" data-delay="80">Certificates</h2>
+          <p class="section__subtitle" data-reveal="up" data-delay="120">A few credentials that back up the skills above.</p>
+        </div>
+
+        <!-- Placeholder certificates — replace name / issuer / date / PDF link with the real ones -->
+        <div class="cert-gallery" id="certGallery">
+          <div class="cert-folder-lid" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+            <span>Credentials</span>
+          </div>
+
+          <div class="cert-grid">
+
+            <article class="cert-card" data-tilt>
+              <span class="cert-card__spotlight" aria-hidden="true"></span>
+              <span class="cert-card__sheen" aria-hidden="true"></span>
+              <span class="cert-card__ribbon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
+              </span>
+              <h3 class="cert-card__name">Full Stack Web Development</h3>
+              <p class="cert-card__issuer">Udemy</p>
+              <p class="cert-card__date">Issued — Jan 2024</p>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="cert-card__btn" data-cursor-hover aria-label="View Full Stack Web Development certificate (opens in a new tab)">
+                <span class="cert-card__btn-sweep" aria-hidden="true"></span>
+                <span>View Certificate</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </article>
+
+            <article class="cert-card" data-tilt>
+              <span class="cert-card__spotlight" aria-hidden="true"></span>
+              <span class="cert-card__sheen" aria-hidden="true"></span>
+              <span class="cert-card__ribbon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
+              </span>
+              <h3 class="cert-card__name">PHP &amp; MySQL Programming</h3>
+              <p class="cert-card__issuer">Coursera</p>
+              <p class="cert-card__date">Issued — Aug 2023</p>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="cert-card__btn" data-cursor-hover aria-label="View PHP and MySQL Programming certificate (opens in a new tab)">
+                <span class="cert-card__btn-sweep" aria-hidden="true"></span>
+                <span>View Certificate</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </article>
+
+            <article class="cert-card" data-tilt>
+              <span class="cert-card__spotlight" aria-hidden="true"></span>
+              <span class="cert-card__sheen" aria-hidden="true"></span>
+              <span class="cert-card__ribbon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
+              </span>
+              <h3 class="cert-card__name">Responsive Web Design</h3>
+              <p class="cert-card__issuer">freeCodeCamp</p>
+              <p class="cert-card__date">Issued — Mar 2023</p>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="cert-card__btn" data-cursor-hover aria-label="View Responsive Web Design certificate (opens in a new tab)">
+                <span class="cert-card__btn-sweep" aria-hidden="true"></span>
+                <span>View Certificate</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </article>
+
+            <article class="cert-card" data-tilt>
+              <span class="cert-card__spotlight" aria-hidden="true"></span>
+              <span class="cert-card__sheen" aria-hidden="true"></span>
+              <span class="cert-card__ribbon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
+              </span>
+              <h3 class="cert-card__name">JavaScript Algorithms &amp; Data Structures</h3>
+              <p class="cert-card__issuer">freeCodeCamp</p>
+              <p class="cert-card__date">Issued — Feb 2024</p>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="cert-card__btn" data-cursor-hover aria-label="View JavaScript Algorithms and Data Structures certificate (opens in a new tab)">
+                <span class="cert-card__btn-sweep" aria-hidden="true"></span>
+                <span>View Certificate</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STUDENT PORTFOLIO INITIATIVE ============ -->
+    <section class="students section" id="students" aria-labelledby="students-title">
+      <div class="section__inner">
+        <div class="students__panel" data-reveal="scale">
+          <div class="students__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 10v6"/></svg>
+          </div>
+          <div class="students__content">
+            <p class="eyebrow">// student-initiative</p>
+            <h2 class="section__title students__title" id="students-title">Student Portfolio Initiative</h2>
+            <p class="students__text">
+              Premium portfolio websites are available at <strong>student-friendly pricing</strong> for school and college students — because a strong portfolio shouldn't wait until after graduation. Same premium UI, same attention to detail, priced for student budgets.
+            </p>
+            <a href="#contact" class="btn btn--primary" data-cursor-hover data-magnetic>
+              <span>Get a Student Quote</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="section__inner">
+        <div class="section__head">
+          <p class="eyebrow" data-reveal="up">// 05 — lets-connect</p>
+          <h2 class="section__title" id="contact-title" data-reveal="up" data-delay="80">Let's build something great.</h2>
+          <p class="section__subtitle" data-reveal="up" data-delay="120">Have a project in mind? Reach out on whichever channel is easiest for you.</p>
+        </div>
+
+        <!-- Placeholder contact details — replace with your real handles/links -->
+        <div class="contact__grid" data-reveal="up" data-delay="160">
+          <a class="contact__card" href="mailto:hello@karuppasami.dev" data-cursor-hover>
+            <span class="contact__icon contact__icon--email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <span class="contact__label">Email</span>
+            <span class="contact__value">hello@karuppasami.dev</span>
+          </a>
+
+          <a class="contact__card" href="tel:+910000000000" data-cursor-hover>
+            <span class="contact__icon contact__icon--phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.86.31 1.7.57 2.51a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.57-1.57a2 2 0 0 1 2.11-.45c.81.26 1.65.45 2.51.57A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span class="contact__label">Phone</span>
+            <span class="contact__value">+91 00000 00000</span>
+          </a>
+
+          <a class="contact__card" href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer" data-cursor-hover>
+            <span class="contact__icon contact__icon--whatsapp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <span class="contact__label">WhatsApp</span>
+            <span class="contact__value">Chat instantly</span>
+          </a>
+
+          <a class="contact__card" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" data-cursor-hover>
+            <span class="contact__icon contact__icon--github"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span>
+            <span class="contact__label">GitHub</span>
+            <span class="contact__value">@yourusername</span>
+          </a>
+
+          <a class="contact__card" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" data-cursor-hover>
+            <span class="contact__icon contact__icon--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+            <span class="contact__label">LinkedIn</span>
+            <span class="contact__value">@yourusername</span>
+          </a>
+
+          <a class="contact__card" href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" data-cursor-hover>
+            <span class="contact__icon contact__icon--instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></span>
+            <span class="contact__label">Instagram</span>
+            <span class="contact__value">@yourusername</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a href="#home" class="footer__logo" data-cursor-hover>Karuppasami<em>.dev</em></a>
+      <p class="footer__copy">© <span id="footerYear"></span> Karuppasami Kasivisvanathan. Designed &amp; built from scratch.</p>
+      <button class="footer__top" id="backToTop" aria-label="Back to top" data-cursor-hover>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING WHATSAPP BUTTON ============ -->
+  <div class="wa-fab" id="waFab">
+    <span class="wa-fab__aura" aria-hidden="true"></span>
+    <span class="wa-fab__ring" aria-hidden="true"></span>
+    <span class="wa-fab__particles" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </span>
+    <span class="wa-fab__ripple" aria-hidden="true"></span>
+
+    <!-- Placeholder number — matches the one used in the Contact section above -->
+    <a href="https://wa.me/910000000000" target="_blank" rel="noopener noreferrer"
+       class="wa-fab__btn" id="waFabBtn" data-cursor-hover
+       aria-label="Chat with Karuppasami on WhatsApp">
+      <svg class="wa-fab__icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 431.9c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 351.6l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 185.4-186.6 185.4zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
+    </a>
+
+    <span class="wa-fab__tooltip" role="tooltip" aria-hidden="true">💬 Let's Chat on WhatsApp</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
