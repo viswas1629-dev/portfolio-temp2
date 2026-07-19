@@ -841,6 +841,19 @@ body.has-custom-cursor .cursor-ring {
   height: 100%;
   padding: 18%;
 }
+.about__photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 58%;
+  transform: scale(1.16);
+  transition: transform .4s ease;
+}
+
+.about__frame:hover .about__photo {
+  transform: scale(1.22);
+}
 .about__badge {
   position: absolute;
   font-family: var(--font-mono);
